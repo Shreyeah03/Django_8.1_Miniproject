@@ -1,0 +1,13 @@
+<h1>{{ object.title }}</h1>
+<p>By {{ object.author }} on {{ object.created_at }}</p>
+{% if object.image %}
+    <img src="{{ object.image.url }}" style="max-width: 300px;">
+{% endif %}
+<p>{{ object.content }}</p>
+
+{% if user == object.author %}
+    <a href="{% url 'post_edit' object.pk %}">Edit</a> | 
+    <a href="{% url 'post_delete' object.pk %}">Delete</a>
+{% endif %}
+<br><br>
+<a href="{% url 'post_list' %}">Back to Home</a>
